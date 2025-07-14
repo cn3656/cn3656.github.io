@@ -1,0 +1,3 @@
+var posts=["articles/hexotwikoo/","articles/linuxshell/","articles/xiaoyaalist/","articles/alistaliyun/","articles/pvesetupistoreos/","articles/casaos/","articles/routeros7use/","articles/typora-picgo-core/","articles/vpsikuai/","articles/vpsros/","articles/truenas/","articles/multipasshelp/","articles/macssh/","articles/jellyfin/","articles/routeros/","articles/aliyunikuai/","articles/internetcafe/","articles/system/","articles/githelp/","articles/屌丝网管第一章/"];function toRandomPost(){
+    pjax.loadUrl('/'+posts[Math.floor(Math.random() * posts.length)]);
+  };
