@@ -1,0 +1,34 @@
+{
+  "name": "ation-blog",
+  "version": "1.0.0",
+  "description": "A lightweight, Hexo-compatible static blog generator with pluggable themes and multi-platform deployment",
+  "main": "lib/index.js",
+  "bin": {
+    "ation": "bin/ation.js"
+  },
+  "scripts": {
+    "init": "node bin/ation.js init",
+    "generate": "node bin/ation.js generate",
+    "server": "node bin/ation.js server",
+    "deploy": "node bin/ation.js deploy",
+    "clean": "node bin/ation.js clean",
+    "new": "node bin/ation.js new",
+    "dev": "node bin/ation.js server --watch"
+  },
+  "keywords": ["blog", "static-site", "hexo-compatible", "github-pages", "cloudflare"],
+  "author": "ation",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "gray-matter": "^4.0.3",
+    "highlight.js": "^11.9.0",
+    "marked": "^12.0.1",
+    "js-yaml": "^4.1.0",
+    "commander": "^12.0.0",
+    "chokidar": "^3.6.0",
+    "connect": "^3.7.0",
+    "serve-static": "^1.15.0",
+    "open": "^10.1.0",
+    "cheerio": "^1.0.0-rc.12"
+  }
+}

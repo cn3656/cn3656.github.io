@@ -1,0 +1,43 @@
+<section class="posts">
+  <h2 class="section-title">Recent Posts</h2>
+  <% posts.forEach(post => { %>
+  <article class="post-card">
+    <div class="post-meta">
+      <time datetime="<%= date(post.date, 'YYYY-MM-DD') %>"><%= date(post.date, 'YYYY-MM-DD') %></time>
+      <% if (post.categories && post.categories.length) { %>
+      <span class="post-category">
+        <% post.categories.forEach(cat => { %>
+        <a href="<%= url_for('/categories/' + cat + '/') %>"><%= cat %></a>
+        <% }) %>
+      </span>
+      <% } %>
+    </div>
+    <h3 class="post-title">
+      <a href="<%= url_for(post.permalink) %>"><%= post.title %></a>
+    </h3>
+    <div class="post-excerpt">
+      <%- post.content %>
+    </div>
+    <% if (post.tags && post.tags.length) { %>
+    <div class="post-tags">
+      <% post.tags.forEach(tag => { %>
+      <a href="<%= url_for('/tags/' + tag + '/') %>" class="tag">#<%= tag %></a>
+      <% }) %>
+    </div>
+    <% } %>
+    <a href="<%= url_for(post.permalink) %>" class="read-more">Read more &rarr;</a>
+  </article>
+  <% }) %>
+  
+  <% if (pagination && pagination.totalPages > 1) { %>
+  <nav class="pagination">
+    <% if (pagination.hasPrev) { %>
+    <a href="<%= pagination.prev === 1 ? url_for('/') : url_for('/page/' + pagination.prev + '/') %>" class="prev">&larr; Prev</a>
+    <% } %>
+    <span class="page-info"><%= pagination.page %> / <%= pagination.totalPages %></span>
+    <% if (pagination.hasNext) { %>
+    <a href="<%= url_for('/page/' + pagination.next + '/') %>" class="next">Next &rarr;</a>
+    <% } %>
+  </nav>
+  <% } %>
+</section>

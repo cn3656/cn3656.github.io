@@ -1,0 +1,23 @@
+<section class="taxonomy">
+  <% if (page.tag) { %>
+  <h1 class="section-title">Tag: <%= page.tag %></h1>
+  <div class="posts-list">
+    <% (posts || []).forEach(post => { %>
+    <article class="post-card">
+      <time><%= date(post.date, 'YYYY-MM-DD') %></time>
+      <a href="<%= url_for(post.permalink) %>"><%= post.title %></a>
+    </article>
+    <% }) %>
+  </div>
+  <% } else { %>
+  <h1 class="section-title">Tags</h1>
+  <div class="taxonomy-cloud">
+    <% (tags || []).forEach(tag => { %>
+    <a href="<%= url_for('/tags/' + tag.name + '/') %>" class="taxonomy-item tag-item">
+      <span class="name">#<%= tag.name %></span>
+      <span class="count"><%= tag.count %></span>
+    </a>
+    <% }) %>
+  </div>
+  <% } %>
+</section>
