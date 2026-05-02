@@ -9,6 +9,10 @@
   <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
   <title><% if (page.title) { %><%= page.title %> - <% } %><%= config.title %></title>
   <%- css('css/style') %>
+  <link rel="icon" type="image/png" sizes="32x32" href="<%= url_for('/images/favicon-32x32.png') %>">
+  <link rel="icon" type="image/png" sizes="16x16" href="<%= url_for('/images/favicon-16x16.png') %>">
+  <link rel="favicon" type="image/x-icon" href="<%= url_for('/images/favicon.ico') %>">
+  <link rel="apple-touch-icon" sizes="180x180" href="<%= url_for('/images/apple-touch-icon.png') %>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -26,7 +30,12 @@
   <header class="header">
     <div class="container">
       <div class="header-left">
-        <h1 class="logo"><a href="<%= url_for('/') %>"><%= config.title %></a></h1>
+        <h1 class="logo">
+          <a href="<%= url_for('/') %>">
+            <img src="<%= url_for('/images/logo.png') %>" alt="Atom" class="logo-icon">
+            <span class="logo-text"><%= config.title %></span>
+          </a>
+        </h1>
         <nav class="nav">
           <% Object.entries(config.menu || {}).forEach(([name, url]) => { %>
           <a href="<%= url_for(url) %>" class="nav-link"><%= name %></a>

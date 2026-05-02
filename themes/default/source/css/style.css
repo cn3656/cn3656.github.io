@@ -158,9 +158,11 @@ a:hover { color: var(--c-accent-hover); }
 
 .header-left { display: flex; align-items: center; gap: 2rem; }
 
-.logo { font-size: 1.25rem; font-weight: 700; letter-spacing: -.02em; }
-.logo a { color: var(--c-text); }
+.logo { font-size: 1.25rem; font-weight: 700; letter-spacing: -.02em; display: flex; align-items: center; }
+.logo a { color: var(--c-text); display: flex; align-items: center; gap: .5rem; }
 .logo a:hover { color: var(--c-accent); text-decoration: none; }
+.logo-icon { width: 28px; height: 28px; border-radius: 6px; flex-shrink: 0; }
+.logo-text { white-space: nowrap; }
 
 .subtitle { display: none; }
 

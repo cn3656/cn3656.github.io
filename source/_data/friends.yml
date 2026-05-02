@@ -1,5 +1,4 @@
-- name: 因特吧博客
-  url: https://inte8.top
-  avatar: https://inte8.top/medias/logo.png
-  introduction: 因特吧的博客，分享技术与生活
-  title: 访问博客
+- name: Atom Blog
+  url: https://github.com/cn3656/atom
+  avatar: https://cn3656.github.io/images/logo.png
+  introduction: 轻量级 Hexo 兼容静态博客生成器
