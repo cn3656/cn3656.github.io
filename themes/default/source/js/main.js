@@ -30,22 +30,22 @@
 
     const btn = document.createElement('button');
     btn.className = 'copy-btn';
-    btn.textContent = 'Copy';
+    btn.textContent = '复制';
     pre.style.position = 'relative';
     pre.appendChild(btn);
 
     btn.addEventListener('click', () => {
       navigator.clipboard.writeText(block.textContent).then(() => {
-        btn.textContent = 'Copied!';
-        setTimeout(() => btn.textContent = 'Copy', 2000);
+        btn.textContent = '已复制';
+        setTimeout(() => btn.textContent = '复制', 2000);
       }).catch(() => {
         const range = document.createRange();
         range.selectNode(block);
         window.getSelection().removeAllRanges();
         window.getSelection().addRange(range);
         document.execCommand('copy');
-        btn.textContent = 'Copied!';
-        setTimeout(() => btn.textContent = 'Copy', 2000);
+        btn.textContent = '已复制';
+        setTimeout(() => btn.textContent = '复制', 2000);
       });
     });
   });
