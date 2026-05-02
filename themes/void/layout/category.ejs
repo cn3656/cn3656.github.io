@@ -1,0 +1,13 @@
+<div class="content-list">
+  <h1 class="list-title"><%= page.category || '分类' %></h1>
+  <% if (posts && posts.length) { %>
+  <ul class="category-items">
+    <% posts.forEach(function(post) { %>
+    <li>
+      <a href="<%= url_for(post.path) %>"><%= post.title %></a>
+      <span class="count"><%= date(post.date, 'YYYY-MM-DD') %></span>
+    </li>
+    <% }); %>
+  </ul>
+  <% } %>
+</div>

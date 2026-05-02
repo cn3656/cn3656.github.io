@@ -6,7 +6,7 @@ language: zh-CN
 timezone: Asia/Shanghai
 url: https://atom.github.io
 root: /
-theme: default
+theme: void
 per_page: 10
 pagination_dir: page
 permalink: :year/:month/:day/:title/

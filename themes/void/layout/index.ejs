@@ -1,0 +1,45 @@
+<!-- Banner -->
+<div class="banner">
+  <div class="banner-inner">
+    <h1 class="site-title"><a href="<%= url_for('/') %>"><%= config.title %></a></h1>
+    <% if (config.subtitle) { %>
+    <p class="site-description"><%= config.subtitle %></p>
+    <% } %>
+  </div>
+</div>
+
+<!-- Post List -->
+<section id="index-list">
+  <div class="post-list">
+    <% posts.forEach(function(post) { %>
+    <div class="post-card">
+      <article>
+        <h2 class="post-title"><a href="<%= url_for(post.path) %>"><%= post.title %></a></h2>
+        <% if (post.excerpt) { %>
+        <p class="post-excerpt"><%= strip_html(post.excerpt) %></p>
+        <% } %>
+        <p class="post-meta"><%= date(post.date, 'YYYY-MM-DD') %></p>
+      </article>
+    </div>
+    <% }); %>
+  </div>
+
+  <!-- Pagination -->
+  <% if (pagination && pagination.totalPages > 1) { %>
+  <nav class="pager">
+    <% if (pagination.hasPrev) { %>
+    <span class="page-item"><a href="<%= pagination.prev === 1 ? url_for('/') : url_for('/page/' + pagination.prev + '/') %>">←</a></span>
+    <% } else { %>
+    <span class="page-item disabled">←</span>
+    <% } %>
+    <% for (var i = 1; i <= pagination.totalPages; i++) { %>
+    <span class="page-item<%= i === pagination.page ? ' active' : '' %>"><a href="<%= i === 1 ? url_for('/') : url_for('/page/' + i + '/') %>"><%= i %></a></span>
+    <% } %>
+    <% if (pagination.hasNext) { %>
+    <span class="page-item"><a href="<%= url_for('/page/' + pagination.next + '/') %>">→</a></span>
+    <% } else { %>
+    <span class="page-item disabled">→</span>
+    <% } %>
+  </nav>
+  <% } %>
+</section>

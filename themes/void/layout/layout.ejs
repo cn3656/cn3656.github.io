@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="<%= config.language || 'zh-CN' %>">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title><% if (page.title && page.title !== config.title) { %><%= page.title %> - <% } %><%= config.title %></title>
+  <% if (config.subtitle) { %><meta name="description" content="<%= config.subtitle %>"><% } %>
+  <link rel="alternate" href="/atom.xml" title="<%= config.title %>" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Noto+Serif+SC:wght@400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <% if (config.seo && config.seo.google_analytics) { %>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=<%= config.seo.google_analytics %>"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','<%= config.seo.google_analytics %>');</script>
+  <% } %>
+</head>
+<body>
+  <div class="reading-progress" style="width:0"></div>
+
+  <!-- Header -->
+  <header class="header headroom--pinned">
+    <div class="header-inner">
+      <button class="btn-menu" aria-label="菜单">☰</button>
+      <a href="<%= url_for('/') %>" class="brand"><%= config.title %></a>
+      <nav>
+        <% var menu = config.menu || {}; %>
+        <% Object.entries(menu).forEach(function(item) { %>
+        <a href="<%= url_for(item[1]) %>"<%= (page.path === item[1].replace(/\/$/, '').replace(/^\//, '') || (item[1] === '/' && page.path === 'index.html')) ? ' class="active"' : '' %>><%= item[0] %></a>
+        <% }); %>
+      </nav>
+      <button class="btn-theme" aria-label="切换主题">☾</button>
+      <button class="btn-settings" aria-label="菜单" style="display:none">⚙</button>
+    </div>
+  </header>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav">
+    <button class="btn-close" aria-label="关闭">✕</button>
+    <% Object.entries(menu).forEach(function(item) { %>
+    <a href="<%= url_for(item[1]) %>"><%= item[0] %></a>
+    <% }); %>
+  </div>
+
+  <!-- Main Content -->
+  <main>
+    <%- body %>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="copyright">
+        <p>&copy; <%= new Date().getFullYear() %> <a href="<%= url_for('/') %>"><%= config.author || config.title %></a>. Powered by <a href="https://github.com/cn3656/atom" target="_blank" rel="noopener">Atom</a>.</p>
+      </div>
+      <% if (config.social) { %>
+      <div class="social-links">
+        <% Object.entries(config.social).forEach(function(item) { %>
+        <a href="<%= item[1] %>" target="_blank" rel="noopener noreferrer"><%= item[0] %></a>
+        <% }); %>
+      </div>
+      <% } %>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="回到顶部">↑</button>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
