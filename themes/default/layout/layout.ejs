@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="<%= config.language || 'zh-CN' %>">
+<html lang="<%= config.language || 'zh-CN' %>" data-theme="auto">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +13,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="alternate" href="/atom.xml" title="<%= config.title %>" type="application/atom+xml">
+  <!-- Prevent FOUC: apply theme before render -->
+  <script>
+    (function(){var t=localStorage.getItem('theme')||'auto';document.documentElement.setAttribute('data-theme',t)})();
+  </script>
   <% if (config.seo && config.seo.google_analytics) { %>
   <script async src="https://www.googletagmanager.com/gtag/js?id=<%= config.seo.google_analytics %>"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','<%= config.seo.google_analytics %>');</script>
@@ -28,6 +32,13 @@
           <a href="<%= url_for(url) %>" class="nav-link"><%= name %></a>
           <% }) %>
         </nav>
+      </div>
+      <div class="header-right">
+        <div class="theme-toggle" role="radiogroup" aria-label="主题切换">
+          <button class="theme-btn" data-mode="light" aria-label="浅色模式" title="浅色">&#9728;</button>
+          <button class="theme-btn" data-mode="auto" aria-label="跟随系统" title="自动">&#9670;</button>
+          <button class="theme-btn" data-mode="dark" aria-label="深色模式" title="深色">&#9790;</button>
+        </div>
       </div>
     </div>
   </header>
