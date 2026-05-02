@@ -36,6 +36,7 @@ pre {
     tab-size: 4;
     overflow-x: auto;
     margin: 0;
+    background-color: #282c34;
 }
 
 /* === code 标签（行内代码） === */
