@@ -4,11 +4,11 @@ layout: page
 date: 2024-01-01
 ---
 
-这是一个由 **Ation** 驱动的博客。
+这是一个由 **Atom** 驱动的博客。
 
-## 关于 Ation
+## 关于 Atom
 
-Ation 是一个轻量级的静态博客生成器，具有以下特点：
+Atom 是一个轻量级的静态博客生成器，具有以下特点：
 
 - 兼容 Hexo 主题和插件生态
 - 支持 GitHub Pages、Gitee Pages、Cloudflare Pages 多平台部署

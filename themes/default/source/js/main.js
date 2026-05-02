@@ -1,5 +1,5 @@
 /**
- * Ation Default Theme — Modern JS
+ * Atom Default Theme — Modern JS
  */
 (function() {
   'use strict';

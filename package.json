@@ -1,19 +1,19 @@
 {
-  "name": "ation-blog",
+  "name": "atom-blog",
   "version": "1.0.0",
   "description": "A lightweight, Hexo-compatible static blog generator with pluggable themes and multi-platform deployment",
   "main": "lib/index.js",
   "bin": {
-    "ation": "bin/ation.js"
+    "atom": "bin/atom.js"
   },
   "scripts": {
-    "init": "node bin/ation.js init",
-    "generate": "node bin/ation.js generate",
-    "server": "node bin/ation.js server",
-    "deploy": "node bin/ation.js deploy",
-    "clean": "node bin/ation.js clean",
-    "new": "node bin/ation.js new",
-    "dev": "node bin/ation.js server --watch"
+    "init": "node bin/atom.js init",
+    "generate": "node bin/atom.js generate",
+    "server": "node bin/atom.js server",
+    "deploy": "node bin/atom.js deploy",
+    "clean": "node bin/atom.js clean",
+    "new": "node bin/atom.js new",
+    "dev": "node bin/atom.js server --watch"
   },
   "keywords": [
     "blog",
@@ -22,7 +22,7 @@
     "github-pages",
     "cloudflare"
   ],
-  "author": "ation",
+  "author": "atom",
   "license": "MIT",
   "dependencies": {
     "cheerio": "^1.0.0-rc.12",

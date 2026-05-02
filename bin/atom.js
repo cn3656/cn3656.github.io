@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Ation Blog - CLI 入口
+ * Atom Blog - CLI 入口
  */
 
 const { Command } = require('commander');
@@ -11,7 +11,7 @@ const yaml = require('js-yaml');
 const program = new Command();
 
 program
-  .name('ation')
+  .name('atom')
   .description('A lightweight, Hexo-compatible static blog generator')
   .version('1.0.0');
 
@@ -21,7 +21,7 @@ program
   .description('Initialize a new blog')
   .action((directory = '.') => {
     const targetDir = path.resolve(directory);
-    console.log(`[Ation] Initializing blog in ${targetDir}...`);
+    console.log(`[Atom] Initializing blog in ${targetDir}...`);
     
     // 创建目录结构
     const dirs = [
@@ -48,12 +48,12 @@ program
     if (!fs.existsSync(configPath)) {
       const config = {
         title: 'My Blog',
-        subtitle: 'A blog powered by Ation',
+        subtitle: 'A blog powered by Atom',
         description: 'A modern, fast blog',
         author: 'Author',
         language: 'zh-CN',
         timezone: 'Asia/Shanghai',
-        url: 'https://ation.github.io',
+        url: 'https://atom.github.io',
         root: '/',
         theme: 'default',
         per_page: 10,
@@ -79,7 +79,7 @@ program
         }
       };
       fs.writeFileSync(configPath, yaml.dump(config), 'utf8');
-      console.log('[Ation] Created _config.yml');
+      console.log('[Atom] Created _config.yml');
     }
     
     // 创建示例文章
@@ -95,7 +95,7 @@ tags:
   - blog
 ---
 
-欢迎来到 Ation Blog！这是你的第一篇文章。
+欢迎来到 Atom Blog！这是你的第一篇文章。
 
 ## 快速开始
 
@@ -103,13 +103,13 @@ tags:
 
 \`\`\`bash
 # 生成静态文件
-ation generate
+atom generate
 
 # 本地预览
-ation server
+atom server
 
 # 部署到 GitHub Pages
-ation deploy
+atom deploy
 \`\`\`
 
 <!-- more -->
@@ -126,7 +126,7 @@ ation deploy
 > 开始写作吧！
 `;
       fs.writeFileSync(postPath, content, 'utf8');
-      console.log('[Ation] Created hello-world.md');
+      console.log('[Atom] Created hello-world.md');
     }
     
     // 创建 about 页面
@@ -138,11 +138,11 @@ layout: page
 date: ${new Date().toISOString().split('T')[0]}
 ---
 
-这是一个由 Ation 驱动的博客。
+这是一个由 Atom 驱动的博客。
 
-Ation 是一个轻量级的静态博客生成器，兼容 Hexo 主题和插件。
+Atom 是一个轻量级的静态博客生成器，兼容 Hexo 主题和插件。
 `, 'utf8');
-      console.log('[Ation] Created about page');
+      console.log('[Atom] Created about page');
     }
     
     // 创建 scaffolds
@@ -170,7 +170,7 @@ tags:
 `, 'utf8');
     }
     
-    console.log('[Ation] Blog initialized! Run `ation server` to preview.');
+    console.log('[Atom] Blog initialized! Run `atom server` to preview.');
   });
 
 // --- generate ---
@@ -224,7 +224,7 @@ program
     
     const server = app.listen(options.port, () => {
       const url = `http://localhost:${options.port}`;
-      console.log(`[Ation] Server running at ${url}`);
+      console.log(`[Atom] Server running at ${url}`);
       try { require('open')(url); } catch {}
     });
     
@@ -237,12 +237,12 @@ program
       const regenerate = async () => {
         if (regenerating) return;
         regenerating = true;
-        console.log('[Ation] Changes detected, regenerating...');
+        console.log('[Atom] Changes detected, regenerating...');
         try {
           await generator.generate();
-          console.log('[Ation] Regeneration complete');
+          console.log('[Atom] Regeneration complete');
         } catch (e) {
-          console.error('[Ation] Error:', e.message);
+          console.error('[Atom] Error:', e.message);
         }
         regenerating = false;
       };
@@ -284,7 +284,7 @@ program
     const filePath = path.join(process.cwd(), dir, `${slug}.md`);
     
     fs.writeFileSync(filePath, content, 'utf8');
-    console.log(`[Ation] Created ${options.draft ? 'draft' : 'post'}: ${filePath}`);
+    console.log(`[Atom] Created ${options.draft ? 'draft' : 'post'}: ${filePath}`);
   });
 
 // --- deploy ---
@@ -305,9 +305,9 @@ program
     const publicDir = path.join(process.cwd(), 'public');
     if (fs.existsSync(publicDir)) {
       fs.rmSync(publicDir, { recursive: true });
-      console.log('[Ation] Cleaned public directory');
+      console.log('[Atom] Cleaned public directory');
     } else {
-      console.log('[Ation] Nothing to clean');
+      console.log('[Atom] Nothing to clean');
     }
   });
 

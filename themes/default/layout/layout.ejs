@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="<%= page.title %> - <%= config.title %>">
-  <meta name="generator" content="Ation Blog">
+  <meta name="generator" content="Atom Blog">
   <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
   <title><% if (page.title) { %><%= page.title %> - <% } %><%= config.title %></title>
@@ -40,7 +40,7 @@
   
   <footer class="footer">
     <div class="container">
-      <p>&copy; <%= new Date().getFullYear() %> <%= config.author || config.title %>. Powered by <a href="https://github.com/ation/ation" target="_blank" rel="noopener">Ation</a>.</p>
+      <p>&copy; <%= new Date().getFullYear() %> <%= config.author || config.title %>. Powered by <a href="https://github.com/atom/atom" target="_blank" rel="noopener">Atom</a>.</p>
       <% if (config.social) { %>
       <div class="social">
         <% Object.entries(config.social).forEach(([name, url]) => { %>

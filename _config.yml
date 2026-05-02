@@ -1,10 +1,10 @@
-title: Ation Blog
-subtitle: A lightweight blog powered by Ation
+title: Atom Blog
+subtitle: A lightweight blog powered by Atom
 description: A modern, fast, and extensible static blog
-author: Ation
+author: Atom
 language: zh-CN
 timezone: Asia/Shanghai
-url: https://ation.github.io
+url: https://atom.github.io
 root: /
 theme: default
 per_page: 10
@@ -18,7 +18,7 @@ category_dir: categories
 
 deploy:
   type: git
-  repo: https://github.com/ation/ation.github.io.git
+  repo: https://github.com/atom/atom.github.io.git
   branch: main
 
 plugins: []
