@@ -8,7 +8,7 @@
       <% if (page.categories && page.categories.length) { %>
       <span class="post-category">
         <% page.categories.forEach(cat => { %>
-        <a href="<%= url_for('/categories/' + cat + '/') %>"><%= cat %></a>
+        <a href="<%= url_for(cat.path || '/categories/' + cat.slug + '/') %>"><%= cat.name %></a>
         <% }) %>
       </span>
       <% } %>
@@ -24,7 +24,7 @@
     <div class="post-tags">
       <strong>标签</strong>
       <% page.tags.forEach(tag => { %>
-      <a href="<%= url_for('/tags/' + tag + '/') %>" class="tag">#<%= tag %></a>
+      <a href="<%= url_for(tag.path || '/tags/' + tag.slug + '/') %>" class="tag">#<%= tag.name %></a>
       <% }) %>
     </div>
   </footer>
