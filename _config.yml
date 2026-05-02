@@ -24,13 +24,13 @@ deploy:
 plugins: []
 
 menu:
-  Home: /
-  Archives: /archives/
-  Categories: /categories/
-  Tags: /tags/
-  Contact: /contact/
-  Friends: /friends/
-  About: /about/
+  首页: /
+  归档: /archives/
+  分类: /categories/
+  标签: /tags/
+  留言: /contact/
+  友链: /friends/
+  关于: /about/
 
 social:
   GitHub: https://github.com/cn3656
