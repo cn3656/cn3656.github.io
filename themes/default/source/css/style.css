@@ -227,7 +227,7 @@ a:hover { color: var(--c-accent-hover); }
 }
 
 /* --- Main --- */
-.main { padding: 3rem 0; min-height: calc(100vh - var(--header-height) - 200px); }
+.main { padding: 2rem 0 1.5rem; min-height: calc(100vh - var(--header-height) - 120px); }
 
 /* --- Section Title --- */
 .section-title {
@@ -240,8 +240,8 @@ a:hover { color: var(--c-accent-hover); }
 /* --- Post Cards --- */
 .post-card {
   position: relative;
-  margin-bottom: 2rem;
-  padding: 1.75rem;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
   background: var(--c-surface);
   border: 1px solid var(--c-border);
   border-radius: var(--radius-lg);
@@ -607,8 +607,8 @@ a:hover { color: var(--c-accent-hover); }
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  margin-top: 3rem;
-  padding: 1.5rem 0;
+  margin-top: 2rem;
+  padding: .75rem 0;
 }
 .pagination a {
   padding: .5rem 1.25rem;
@@ -623,12 +623,12 @@ a:hover { color: var(--c-accent-hover); }
 
 /* --- Footer --- */
 .footer {
-  margin-top: 4rem;
-  padding: 2.5rem 0;
+  margin-top: 2.5rem;
+  padding: 1.5rem 0;
   border-top: 1px solid var(--c-border);
   text-align: center;
   color: var(--c-text-tertiary);
-  font-size: .8rem;
+  font-size: .85rem;
 }
 .footer p { margin-bottom: .5rem; }
 .social { display: flex; justify-content: center; gap: 1.25rem; margin-top: .5rem; }
