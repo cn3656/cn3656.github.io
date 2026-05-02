@@ -1,0 +1,183 @@
+/*
+ * Ation Blog 代码高亮主题
+ * 基于 atom-one-dark 配色 + matery 主题布局适配
+ * 完整覆盖 .hljs token 着色
+ */
+
+/* === 代码块容器 === */
+.code-area {
+    position: relative;
+    margin: 1.5rem 0;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,.15);
+}
+
+/* 红黄绿三圆点 */
+.code-area::after {
+    content: " ";
+    position: absolute;
+    border-radius: 50%;
+    background: #ff5f56;
+    width: 12px;
+    height: 12px;
+    top: 0;
+    left: 12px;
+    margin-top: 12px;
+    -webkit-box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
+    box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
+    z-index: 2;
+}
+
+/* === pre 标签 === */
+pre {
+    padding: 2.5rem 1rem 1rem 1.5rem !important;
+    border-radius: 0.5rem;
+    tab-size: 4;
+    overflow-x: auto;
+    margin: 0;
+}
+
+/* === code 标签（行内代码） === */
+code {
+    padding: 1px 5px;
+    font-family: 'Fira Code', 'JetBrains Mono', Inconsolata, Monaco, Consolas, 'Courier New', monospace;
+    font-size: 0.91rem;
+    color: #e96900;
+    background-color: #f8f8f8;
+    border-radius: 2px;
+}
+
+/* === 代码块内的 code === */
+pre code {
+    padding: 0 !important;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #abb2bf;
+    background-color: transparent !important;
+    border-radius: 0;
+    white-space: pre;
+    word-wrap: normal;
+}
+
+pre .hljs {
+    background-color: #282c34 !important;
+    color: #abb2bf;
+    padding: 0;
+}
+
+/* === atom-one-dark 配色方案 === */
+.hljs-comment,
+.hljs-quote { color: #5c6370; font-style: italic; }
+
+.hljs-doctag,
+.hljs-keyword,
+.hljs-formula { color: #c678dd; }
+
+.hljs-section,
+.hljs-name,
+.hljs-selector-tag,
+.hljs-deletion,
+.hljs-subst { color: #e06c75; }
+
+.hljs-literal { color: #56b6c2; }
+
+.hljs-string,
+.hljs-regexp,
+.hljs-addition,
+.hljs-attribute,
+.hljs-meta .hljs-string { color: #98c379; }
+
+.hljs-attr,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-type,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-number { color: #d19a66; }
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link,
+.hljs-meta,
+.hljs-selector-id,
+.hljs-title { color: #61aeee; }
+
+.hljs-built_in,
+.hljs-title.class_,
+.hljs-class .hljs-title { color: #e6c07b; }
+
+.hljs-emphasis { font-style: italic; }
+.hljs-strong { font-weight: bold; }
+.hljs-link { text-decoration: underline; }
+
+/* === 功能按钮样式（覆盖 matery 原有） === */
+.code_copy {
+    position: absolute;
+    top: 0.7rem;
+    right: 25px;
+    z-index: 3;
+    filter: invert(50%);
+    cursor: pointer;
+    transition: filter .3s;
+}
+.code_copy:hover { filter: invert(70%); }
+
+.codecopy_notice {
+    position: absolute;
+    top: 0.7rem;
+    right: 6px;
+    z-index: 3;
+    filter: invert(50%);
+    opacity: 0;
+}
+
+.code_lang {
+    position: absolute;
+    top: 1.2rem;
+    right: 46px;
+    line-height: 0;
+    font-weight: bold;
+    font-family: Consolas, Monaco, 'Andale Mono', monospace;
+    font-size: 0.8rem;
+    z-index: 3;
+    filter: invert(50%);
+    cursor: pointer;
+}
+
+.code-expand {
+    position: absolute;
+    top: 4px;
+    right: 0;
+    filter: invert(50%);
+    padding: 7px;
+    z-index: 999 !important;
+    cursor: pointer;
+    transition: all .3s;
+    transform: rotate(0deg);
+}
+
+.code-closed .code-expand {
+    transform: rotate(-180deg) !important;
+    transition: all .3s;
+}
+
+.code-closed pre::before {
+    height: 0;
+}
+
+/* === 滚动条美化 === */
+pre::-webkit-scrollbar {
+    height: 6px;
+}
+pre::-webkit-scrollbar-track {
+    background: transparent;
+}
+pre::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,.15);
+    border-radius: 3px;
+}
+pre::-webkit-scrollbar-thumb:hover {
+    background: rgba(255,255,255,.3);
+}
