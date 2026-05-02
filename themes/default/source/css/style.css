@@ -714,3 +714,62 @@ a:hover { color: var(--c-accent-hover); }
   padding-top: 2rem;
   border-top: 1px solid var(--c-border);
 }
+
+/* --- Friends Page --- */
+.friends-intro { margin-bottom: 2rem; }
+
+.friends-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.friend-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-md);
+  transition: all var(--transition);
+  text-decoration: none;
+}
+
+.friend-card:hover {
+  border-color: var(--c-accent);
+  box-shadow: var(--c-shadow-md);
+  transform: translateY(-2px);
+}
+
+.friend-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: var(--c-surface-hover);
+}
+
+.friend-info {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+  min-width: 0;
+}
+
+.friend-name {
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--c-text);
+}
+
+.friend-desc {
+  font-size: .8rem;
+  color: var(--c-text-secondary);
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
