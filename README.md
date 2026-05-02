@@ -292,6 +292,121 @@ deploy:
 
 ---
 
+## 自定义图标 (Logo & Favicon)
+
+Atom 使用一组图标文件，存放在 `source/images/` 目录下：
+
+| 文件 | 尺寸 | 用途 |
+|------|------|------|
+| `logo.png` | 512×512 | 顶部导航栏 Logo |
+| `favicon.ico` | 16+32 | 浏览器标签图标 |
+| `favicon-32x32.png` | 32×32 | 标准 Favicon |
+| `favicon-16x16.png` | 16×16 | 小尺寸 Favicon |
+| `apple-touch-icon.png` | 180×180 | iOS 添加到主屏幕 |
+| `android-chrome-192x192.png` | 192×192 | Android 主屏幕图标 |
+
+### 替换图标
+
+只需用自己的图标文件覆盖上述文件即可，**建议使用透明背景的 PNG**，这样在浅色/深色模式下都不会突兀。
+
+```bash
+# 替换全部图标（保持文件名不变）
+cp my-logo-512.png source/images/logo.png
+cp my-icon-32.png source/images/favicon-32x32.png
+cp my-icon-16.png source/images/favicon-16x16.png
+cp my-icon-180.png source/images/apple-touch-icon.png
+cp my-icon-192.png source/images/android-chrome-192x192.png
+
+# 生成 favicon.ico（需要 ImageMagick 或在线工具）
+convert favicon-32x32.png favicon-16x16.png source/images/favicon.ico
+
+# 重新生成并部署
+node bin/atom.js generate
+```
+
+也可以使用在线工具（如 [realfavicongenerator.net](https://realfavicongenerator.net)）上传一张 512×512 的图片，一次性生成所有尺寸。
+
+### 图标引用位置
+
+图标在 `themes/default/layout/layout.ejs` 中引用：
+
+```html
+<!-- Favicon -->
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+<link rel="favicon" type="image/x-icon" href="/images/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<!-- Header Logo -->
+<img src="/images/logo.png" alt="Atom" class="logo-icon">
+```
+
+如果更换了文件名或路径，需要同步修改此处。
+
+---
+
+## 友情链接
+
+友情链接页面从数据文件自动渲染，无需手动编辑页面内容。
+
+### 添加友链
+
+编辑 `source/_data/friends.yml`，每条友链占一项：
+
+```yaml
+- name: 博客名称
+  url: https://example.com
+  avatar: https://example.com/logo.png
+  introduction: 一句话描述这个博客
+
+- name: 另一个博客
+  url: https://another.com
+  avatar: https://another.com/avatar.jpg
+  introduction: 另一个博客的简介
+```
+
+字段说明：
+
+| 字段 | 必填 | 说明 |
+|------|------|------|
+| `name` | 是 | 博客名称 |
+| `url` | 是 | 博客地址 |
+| `avatar` | 否 | 头像/Logo 图片地址，不填则不显示头像 |
+| `introduction` | 否 | 一句话简介 |
+
+### 渲染效果
+
+保存后重新生成（`node bin/atom.js generate`），友链页面会自动渲染为卡片列表：
+- 头像（圆形）+ 名称 + 描述
+- 响应式网格布局，自适应屏幕宽度
+- Hover 时有上浮动效
+
+### 友链页面开启评论
+
+友链页面默认开启了评论区（`comments: true`），方便访客申请交换友链。配置 Giscus 后评论区自动显示，详见「评论系统」章节。
+
+### 友链页面内容
+
+友链页面正文（欢迎语、本站信息等）在 `source/friends/index.md` 中编辑：
+
+```markdown
+---
+title: 友情链接
+layout: friends
+comments: true
+---
+
+欢迎交换友链！请在评论区留言...
+
+**本站信息：**
+- 博客名称：My Blog
+- 博客网址：https://example.com
+```
+
+> 注意：`layout: friends` 不能改，它指定使用友链专用模板渲染卡片。
+
+---
+
 ## 创建独立页面
 
 在 `source/` 下创建目录和 `index.md`：

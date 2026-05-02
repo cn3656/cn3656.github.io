@@ -39,9 +39,8 @@ seo:
   google_analytics: ""
 
 # 评论系统（Giscus，基于 GitHub Discussions）
-# 配置步骤：https://giscus.app → 填写仓库信息 → 复制生成的参数
-# giscus:
-#   repo: cn3656/cn3656.github.io
-#   repo_id: your-repo-id
-#   category: Announcements
-#   category_id: your-category-id
+giscus:
+  repo: cn3656/cn3656.github.io
+  repo_id: R_kgDOPKkpmA
+  category: Announcements
+  category_id: DIC_kwDOPKkpmM4C8KGv
