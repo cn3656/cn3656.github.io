@@ -1,6 +1,6 @@
-<section class="taxonomy">
+<section class="taxonomy animate-in">
   <% if (page.category) { %>
-  <h1 class="section-title">Category: <%= page.category %></h1>
+  <h1 class="section-title">分类：<%= page.category %></h1>
   <div class="posts-list">
     <% (posts || []).forEach(post => { %>
     <article class="post-card">
@@ -10,7 +10,7 @@
     <% }) %>
   </div>
   <% } else { %>
-  <h1 class="section-title">Categories</h1>
+  <h1 class="section-title">分类</h1>
   <div class="taxonomy-cloud">
     <% (categories || []).forEach(cat => { %>
     <a href="<%= url_for('/categories/' + cat.name + '/') %>" class="taxonomy-item">

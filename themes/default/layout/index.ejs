@@ -1,7 +1,6 @@
 <section class="posts">
-  <h2 class="section-title">Recent Posts</h2>
-  <% posts.forEach(post => { %>
-  <article class="post-card">
+  <% posts.forEach((post, i) => { %>
+  <article class="post-card animate-in">
     <div class="post-meta">
       <time datetime="<%= date(post.date, 'YYYY-MM-DD') %>"><%= date(post.date, 'YYYY-MM-DD') %></time>
       <% if (post.categories && post.categories.length) { %>
@@ -25,18 +24,18 @@
       <% }) %>
     </div>
     <% } %>
-    <a href="<%= url_for(post.permalink) %>" class="read-more">Read more &rarr;</a>
+    <a href="<%= url_for(post.permalink) %>" class="read-more">阅读全文</a>
   </article>
   <% }) %>
   
   <% if (pagination && pagination.totalPages > 1) { %>
   <nav class="pagination">
     <% if (pagination.hasPrev) { %>
-    <a href="<%= pagination.prev === 1 ? url_for('/') : url_for('/page/' + pagination.prev + '/') %>" class="prev">&larr; Prev</a>
+    <a href="<%= pagination.prev === 1 ? url_for('/') : url_for('/page/' + pagination.prev + '/') %>" class="prev">&larr; 上一页</a>
     <% } %>
     <span class="page-info"><%= pagination.page %> / <%= pagination.totalPages %></span>
     <% if (pagination.hasNext) { %>
-    <a href="<%= url_for('/page/' + pagination.next + '/') %>" class="next">Next &rarr;</a>
+    <a href="<%= url_for('/page/' + pagination.next + '/') %>" class="next">下一页 &rarr;</a>
     <% } %>
   </nav>
   <% } %>
