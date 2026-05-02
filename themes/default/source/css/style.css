@@ -702,8 +702,15 @@ a:hover { color: var(--c-accent-hover); }
 
 /* --- Print --- */
 @media print {
-  .header, .footer, .nav, .pagination, .back-top, .theme-toggle { display: none !important; }
+  .header, .footer, .nav, .pagination, .back-top, .theme-toggle, .comments { display: none !important; }
   body { font-size: 12pt; }
   .post-content { max-width: 100%; }
   .post-card { box-shadow: none; border: 1px solid #ccc; break-inside: avoid; }
+}
+
+/* --- Comments --- */
+.comments {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--c-border);
 }

@@ -1,13 +1,17 @@
 ---
 title: 友情链接
-layout: friends
+layout: page
 date: 2024-01-01
-type: friends
+comments: true
 ---
 
-欢迎交换友链！请在下方评论区留言，附上你的博客信息。
+欢迎交换友链！请在评论区留言，附上你的博客信息。
 
 **本站信息：**
 - 博客名称：Atom Blog
-- 博客网址：https://atom.github.io
+- 博客网址：https://cn3656.github.io
 - 博客描述：一个轻量级的静态博客生成器
+
+## 友链列表
+
+> 暂无友链，期待你的加入！
