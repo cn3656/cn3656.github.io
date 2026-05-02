@@ -538,6 +538,12 @@ node bin/atom.js clean               # 清除生成文件
 
 ---
 
+## 致谢
+
+本项目由 [Hermes Agent](https://github.com/nousresearch/hermes) 搭配 **GLM-5.1** 模型协作生成。
+
+---
+
 ## License
 
 MIT
