@@ -1,0 +1,78 @@
+<!-- Hero Banner -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="hero-title"><%= config.title %></h1>
+      <% if (config.subtitle) { %>
+      <p class="hero-subtitle"><%= config.subtitle %></p>
+      <% } %>
+      <div class="hero-actions">
+        <a href="<%= url_for('/about/') %>" class="btn btn-primary">了解更多</a>
+        <a href="<%= url_for('/contact/') %>" class="btn btn-outline">联系我们</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Latest News -->
+<section class="news-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">最新动态</h2>
+      <a href="<%= url_for('/archives/') %>" class="section-more">查看全部 &rarr;</a>
+    </div>
+
+    <div class="news-grid">
+      <% posts.slice(0, 6).forEach(function(post) { %>
+      <article class="news-card">
+        <div class="news-card-body">
+          <div class="news-meta">
+            <time datetime="<%= date(post.date, 'YYYY-MM-DD') %>"><%= date(post.date, 'YYYY-MM-DD') %></time>
+            <% if (post.categories && post.categories.length) { %>
+            <span class="news-category">
+              <% post.categories.forEach(function(cat) { %>
+              <a href="<%= url_for(cat.path || '/categories/' + cat.slug + '/') %>"><%= cat.name %></a>
+              <% }) %>
+            </span>
+            <% } %>
+          </div>
+          <h3 class="news-title">
+            <a href="<%= url_for(post.permalink) %>"><%= post.title %></a>
+          </h3>
+          <div class="news-excerpt">
+            <%- post.content %>
+          </div>
+          <a href="<%= url_for(post.permalink) %>" class="news-link">阅读全文 &rarr;</a>
+        </div>
+      </article>
+      <% }) %>
+    </div>
+
+    <!-- Older posts as list -->
+    <% if (posts.length > 6) { %>
+    <div class="older-posts">
+      <h3 class="older-title">更多文章</h3>
+      <ul class="older-list">
+        <% posts.slice(6).forEach(function(post) { %>
+        <li>
+          <time><%= date(post.date, 'MM-DD') %></time>
+          <a href="<%= url_for(post.permalink) %>"><%= post.title %></a>
+        </li>
+        <% }) %>
+      </ul>
+    </div>
+    <% } %>
+
+    <% if (pagination && pagination.totalPages > 1) { %>
+    <nav class="pagination">
+      <% if (pagination.hasPrev) { %>
+      <a href="<%= pagination.prev === 1 ? url_for('/') : url_for('/page/' + pagination.prev + '/') %>" class="page-btn">&larr; 上一页</a>
+      <% } %>
+      <span class="page-info"><%= pagination.page %> / <%= pagination.totalPages %></span>
+      <% if (pagination.hasNext) { %>
+      <a href="<%= url_for('/page/' + pagination.next + '/') %>" class="page-btn">下一页 &rarr;</a>
+      <% } %>
+    </nav>
+    <% } %>
+  </div>
+</section>

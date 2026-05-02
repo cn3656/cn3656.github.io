@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="<%= config.language || 'zh-CN' %>" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="<%= page.title %> - <%= config.title %>">
+  <meta name="generator" content="Atom Blog">
+  <meta name="theme-color" content="#1a56db">
+  <title><% if (page.title) { %><%= page.title %> - <% } %><%= config.title %></title>
+  <%- css('css/style') %>
+  <link rel="icon" type="image/png" sizes="32x32" href="<%= url_for('/images/favicon-32x32.png') %>">
+  <link rel="icon" type="image/png" sizes="16x16" href="<%= url_for('/images/favicon-16x16.png') %>">
+  <link rel="favicon" type="image/x-icon" href="<%= url_for('/images/favicon.ico') %>">
+  <link rel="apple-touch-icon" sizes="180x180" href="<%= url_for('/images/apple-touch-icon.png') %>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="alternate" href="/atom.xml" title="<%= config.title %>" type="application/atom+xml">
+  <!-- Prevent FOUC -->
+  <script>
+    (function(){var t=localStorage.getItem('corp-theme')||'light';document.documentElement.setAttribute('data-theme',t)})();
+  </script>
+  <% if (config.seo && config.seo.google_analytics) { %>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=<%= config.seo.google_analytics %>"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','<%= config.seo.google_analytics %>');</script>
+  <% } %>
+</head>
+<body>
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <span class="top-bar-text">欢迎访问 <%= config.title %></span>
+      <div class="top-bar-actions">
+        <div class="theme-toggle">
+          <button class="theme-btn active" data-mode="light" title="浅色模式">&#9728;</button>
+          <button class="theme-btn" data-mode="dark" title="深色模式">&#9790;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header / Navbar -->
+  <header class="header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="<%= url_for('/') %>" class="brand">
+          <img src="<%= url_for('/images/logo.png') %>" alt="<%= config.title %>" class="brand-logo">
+          <span class="brand-name"><%= config.title %></span>
+          <% if (config.subtitle) { %>
+          <span class="brand-tagline"><%= config.subtitle %></span>
+          <% } %>
+        </a>
+        <button class="mobile-menu-btn" aria-label="打开菜单">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="nav">
+          <% Object.entries(config.menu || {}).forEach(function([name, url]) { %>
+          <a href="<%= url_for(url) %>" class="nav-link"><%= name %></a>
+          <% }) %>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main">
+    <%- body %>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-about">
+          <div class="footer-brand">
+            <img src="<%= url_for('/images/logo.png') %>" alt="<%= config.title %>" class="footer-logo">
+            <span><%= config.title %></span>
+          </div>
+          <p class="footer-desc"><%= config.subtitle || '' %></p>
+        </div>
+        <div class="footer-col">
+          <h4>快速导航</h4>
+          <% var quickLinks = Object.entries(config.menu || {}).slice(0, 5); %>
+          <% quickLinks.forEach(function([name, url]) { %>
+          <a href="<%= url_for(url) %>"><%= name %></a>
+          <% }) %>
+        </div>
+        <div class="footer-col">
+          <h4>联系方式</h4>
+          <% if (config.social) { %>
+          <% Object.entries(config.social).forEach(function([name, url]) { %>
+          <a href="<%= url %>" target="_blank" rel="noopener noreferrer"><%= name %></a>
+          <% }) %>
+          <% } %>
+          <a href="<%= url_for('/contact/') %>">在线留言</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <%= new Date().getFullYear() %> <%= config.author || config.title %>. 保留所有权利。</p>
+        <p class="footer-powered">由 <a href="https://github.com/cn3656/atom" target="_blank" rel="noopener">Atom</a> 驱动 · Corporate 主题</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-top" aria-label="回到顶部">&uarr;</button>
+  <%- js('js/main') %>
+</body>
+</html>

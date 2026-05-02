@@ -1,0 +1,25 @@
+<section class="section">
+  <div class="container">
+    <% if (page.category) { %>
+    <h1 class="page-title-bar">分类：<%= page.category %></h1>
+    <div class="taxonomy-posts">
+      <% (posts || []).forEach(function(post) { %>
+      <article class="taxonomy-post">
+        <time><%= date(post.date, 'YYYY-MM-DD') %></time>
+        <a href="<%= url_for(post.permalink) %>"><%= post.title %></a>
+      </article>
+      <% }) %>
+    </div>
+    <% } else { %>
+    <h1 class="page-title-bar">分类</h1>
+    <div class="taxonomy-grid">
+      <% (categories || []).forEach(function(cat) { %>
+      <a href="<%= url_for('/categories/' + cat.name + '/') %>" class="taxonomy-card">
+        <span class="taxonomy-name"><%= cat.name %></span>
+        <span class="taxonomy-count"><%= cat.count %> 篇</span>
+      </a>
+      <% }) %>
+    </div>
+    <% } %>
+  </div>
+</section>

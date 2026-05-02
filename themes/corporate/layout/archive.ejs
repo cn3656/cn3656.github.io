@@ -1,0 +1,25 @@
+<section class="section">
+  <div class="container">
+    <h1 class="page-title-bar">归档</h1>
+    <div class="archive-list">
+      <% archives.forEach(function(yearData) { %>
+      <div class="archive-year">
+        <h2 class="archive-year-title"><%= yearData.year %> <span class="count">(<%= yearData.count %> 篇)</span></h2>
+        <% yearData.months.forEach(function(monthData) { %>
+        <div class="archive-month">
+          <h3 class="archive-month-title"><%= monthData.month %> 月</h3>
+          <ul class="archive-items">
+            <% monthData.posts.forEach(function(post) { %>
+            <li>
+              <time><%= date(post.date, 'MM-DD') %></time>
+              <a href="<%= url_for(post.permalink) %>"><%= post.title %></a>
+            </li>
+            <% }) %>
+          </ul>
+        </div>
+        <% }) %>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
