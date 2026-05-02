@@ -24,8 +24,8 @@ A lightweight, Hexo-compatible static blog generator with pluggable themes and m
 
 ```bash
 # Clone / 克隆
-git clone https://github.com/atom/atom.github.io.git
-cd atom.github.io
+git clone https://github.com/cn3656/cn3656.github.io.git
+cd cn3656.github.io
 
 # Install dependencies / 安装依赖
 npm install
