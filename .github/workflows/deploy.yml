@@ -27,7 +27,7 @@ jobs:
       
       - run: npm ci
       
-      - run: node bin/ation.js generate
+      - run: node bin/atom.js generate
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
