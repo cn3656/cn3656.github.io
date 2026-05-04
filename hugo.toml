@@ -1,0 +1,62 @@
+baseURL = 'https://cn3656.github.io/'
+locale = 'zh_CN'
+defaultContentLanguage = 'zh'
+title = 'Hugo Blog'
+theme = 'PaperMod'
+
+[pagination]
+  pagerSize = 10
+
+[params]
+  description = '基于 Hugo 的个人博客'
+  author = 'cn3656'
+  defaultTheme = 'auto'
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+
+  [params.homeInfoParams]
+    Title = '你好 👋'
+    Content = '欢迎来到我的 Hugo 博客'
+
+[[params.socialIcons]]
+  name = 'github'
+  url = 'https://github.com/cn3656'
+
+[outputs]
+  home = ['HTML', 'RSS', 'JSON']
+
+[markup]
+  [markup.highlight]
+    style = 'dracula'
+    lineNos = false
+    codeFences = true
+    guessSyntax = true
+
+[[menu.main]]
+  name = '首页'
+  url = '/'
+  weight = 1
+
+[[menu.main]]
+  name = '归档'
+  url = '/archives/'
+  weight = 5
+
+[[menu.main]]
+  name = '分类'
+  url = '/categories/'
+  weight = 10
+
+[[menu.main]]
+  name = '标签'
+  url = '/tags/'
+  weight = 15
+
+[[menu.main]]
+  name = '搜索'
+  url = '/search/'
+  weight = 20
+ignoreLogs = ["warning-goldmark-raw-html"]
