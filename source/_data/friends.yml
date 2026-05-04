@@ -1,0 +1,4 @@
+- name: Atom Blog
+  url: https://github.com/cn3656/atom
+  avatar: https://cn3656.github.io/images/logo.png
+  introduction: 轻量级 Hexo 兼容静态博客生成器
